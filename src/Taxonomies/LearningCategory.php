@@ -254,18 +254,18 @@ if (! class_exists('LearningCategory')) {
                 $parentTmsId = $parentCategory['id'];
                 $parentName = $parentCategory['name'];
                 $parentDescription = $parentCategory['description'];
-                $parentTermId = self::checkifExists($parentTmsId);
-                if (!$parentTermId) {
+                //$parentTermId = self::checkifExists($parentTmsId);
+                //if (!$parentTermId) {
                     $parentTerm = self::nodeToTerm($parentCategory);
                     $parentTermId = $parentTerm['termId'];
-                }
+                //}
                 $termArgs['parent'] = $parentTermId;
             }
 
-            $termId = self::checkifExists($tmsId);
-            if ($termId) {
+            //$termId = self::checkifExists($tmsId);
+            //if ($termId) {
                 $results['exists'] = 1;
-            } else {
+            //} else {
                 $term = wp_insert_term(
                     $name,
                     $taxonomy,
@@ -280,16 +280,15 @@ if (! class_exists('LearningCategory')) {
                 } else {
                     $termId = $term['term_id'];
                     $results['imported'] = 1;
-
-                    $metas = self::$metas;
-                    foreach ($metas as $key => $value) {
-                        $tmsKey = $value['tmsKey'];
-                        update_term_meta($termId, $key, $node[$tmsKey]);
-                    }
                 }
-            }
+            //}
 
             if ($termId) {
+                $metas = self::$metas;
+                foreach ($metas as $key => $value) {
+                    $tmsKey = $value['tmsKey'];
+                    update_term_meta($termId, $key, $node[$tmsKey]);
+                }
                 $results['termId'] = $termId;
             }
 

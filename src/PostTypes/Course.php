@@ -845,16 +845,16 @@ if (!class_exists('Course')) {
             foreach ($learningCategories as $node) {
                 $node = $node['node'];
                 $tmsId = $node['id'];
-                $termId = Taxonomies\LearningCategory::checkifExists($tmsId);
-                if (!$termId) {
+                //$termId = Taxonomies\LearningCategory::checkifExists($tmsId);
+                //if (!$termId) {
                     $results = Taxonomies\LearningCategory::nodeToTerm($node);
                     if (!empty($results['termId'])) {
-                        $termId[] = $results['termId'];
+                        $termIds[] = $results['termId'];
                     }
-                }
-                if ($termId) {
-                    $termIds[] = $termId;
-                }
+                //}
+                // if ($termId) {
+                //     $termIds[] = $termId;
+                // }
             }
             if ($termIds) {
                 wp_set_post_terms($postId, $termIds, self::$taxonomy);
@@ -1466,7 +1466,7 @@ if (!class_exists('Course')) {
                         $tmsValue = implode('|', $locationIds);
                         break;
                     case 'isBundle':
-                        if ($node[$tmsKey]) {
+                        if (isset($node[$tmsKey]) && !empty($node[$tmsKey])) {
                             $tmsValue = 'true';
                         } else {
                             $tmsValue = 'false';
@@ -1588,6 +1588,21 @@ if (!class_exists('Course')) {
                     // Check for settings Flag before translating Terms
                     $synchTermLang = (int) Settings::instance()->getSettingsOption('advanced', 'synch_term_lang');
                     if ($postId && $postTermIds && $synchTermLang) {
+
+                        // loop over Active languages and create the corresponding categories / language.
+                        // Get language IDs and assign those to the post.
+                        global $sitepress;
+                        $languages = $sitepress->get_ls_languages();
+
+                        foreach($languages as $lang) {
+                            $wpmlLangCode = $lang['code'];
+
+
+                        }
+
+                        //var_dump($languages);
+                        //die();
+
                         $results['termsTransId'] = self::setTermsLang($postId, $langCode, $postTermIds);
                     }
                 }
