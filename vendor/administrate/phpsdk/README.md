@@ -149,6 +149,7 @@ $activationParams = [
     'oauthServer' => 'https://portal-auth.administratehq.com', // Administrate weblink authorization endpoint
     'apiUri' => 'https://weblink-api.administratehq.com/graphql', // Administrate Weblink endpoint
     'portal' => 'APPNAME.administrateweblink.com',
+    'client' => 'CLIENT_INITIALS-booking-portal',
 ];
 
 // Create Activate Class instance
@@ -174,6 +175,7 @@ $params = [
     'oauthServer' => 'https://portal-auth.administratehq.com', // Administrate weblink authorization endpoint
     'apiUri' => 'https://weblink-api.administratehq.com/graphql', // Administrate Weblink endpoint
     'portal' => 'APPNAME.administrateweblink.com',
+    'client' => 'CLIENT_INITIALS-booking-portal',
     'portalToken' => 'Tcdg...DIY9o',
 ];
 
@@ -224,6 +226,7 @@ $params = [
     'oauthServer' => 'https://portal-auth.administratehq.com', // Administrate weblink authorization endpoint
     'apiUri' => 'https://weblink-api.administratehq.com/graphql',
     'portal' => 'APPNAME.administrateweblink.com',
+    'client' => 'CLIENT_INITIALS-booking-portal',
     'portalToken' => 'Tcdg...DIY9o',
 ];
 
@@ -289,6 +292,7 @@ $params = [
     'oauthServer' => 'https://portal-auth.administratehq.com', // Administrate weblink authorization endpoint
     'apiUri' => 'https://weblink-api.administratehq.com/graphql', // Administrate Weblink endpoint
     'portal' => 'APPNAME.administrateweblink.com',
+    'client' => 'CLIENT_INITIALS-booking-portal',
     'portalToken' => 'Tcdg...DIY9o',
 ];
 
@@ -339,6 +343,7 @@ $params = [
     'oauthServer' => 'https://portal-auth.administratehq.com', // Administrate weblink authorization endpoint
     'apiUri' => 'https://weblink-api.administratehq.com/graphql',
     'portal' => 'APPNAME.administrateweblink.com',
+    'client' => 'CLIENT_INITIALS-booking-portal',
     'portalToken' => 'Tcdg...DIY9o',
 ];
 

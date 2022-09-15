@@ -36,6 +36,10 @@ class Client extends GqlClient
             $headers['weblink-portal'] = $params['portal'];
         }
 
+        if (isset($params['client']) && !empty($params['client'])) {
+            $headers['weblink-client'] = $params['client'];
+        }
+
         return $headers;
     }
 

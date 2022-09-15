@@ -289,6 +289,10 @@ if (!class_exists('Settings')) {
 
             $settings_index = 'account';
 
+            if (!isset($settings) && empty($settings)) {
+                $settings['client'] = sanitize_title(get_bloginfo('name'));
+            }
+
             $this->settings[$settings_index] = $settings;
             update_option($settings_key, $settings);
 
@@ -500,6 +504,20 @@ if (!class_exists('Settings')) {
                     'settings_key' => $settings_key,
                     'placeholder'  => 'Portal',
                     'info'         => '<i>' . __('Portal Url to connect to', ADMWPP_TEXT_DOMAIN) . '</i>',
+                )
+            );
+
+            add_settings_field(
+                'admwpp-client',
+                __('Client Identifier:', ADMWPP_TEXT_DOMAIN),
+                array($this, 'settingsFieldInput'),
+                "admwpp_" . $settings_key . "_settings",
+                'admwpp_account_weblink_section',
+                array(
+                    'field'        => 'client',
+                    'settings_key' => $settings_key,
+                    'placeholder'  => 'xxx-booking-portal, xxx-website-staging, xxx-website-prod ',
+                    'info'         => '<i>' . __('Client Identifier to be added in API headers', ADMWPP_TEXT_DOMAIN) . '<br/> This field value can be defined/overridden using ADMWPP_WEBLINK_CLIENT in wp-config.php</i>',
                 )
             );
         }

@@ -23,17 +23,10 @@ class ActivationController extends Base\ActionController
 
         update_option('admwpp_active', 0);
 
-        $params = self::$params;
-
-        $instance = $params['admwpp_account_settings']['instance'];
-        $app_id = $params['admwpp_account_settings']['app_id'];
-        $app_secret = $params['admwpp_account_settings']['app_secret'];
-        $portal = $params['admwpp_account_settings']['portal'];
-
-        Settings::instance()->setSettingsOption('account', 'instance', $instance);
-        Settings::instance()->setSettingsOption('account', 'app_id', $app_id);
-        Settings::instance()->setSettingsOption('account', 'app_secret', $app_secret);
-        Settings::instance()->setSettingsOption('account', 'portal', $portal);
+        $params = self::$params['admwpp_account_settings'];
+        foreach ($params as $key => $value) {
+            Settings::instance()->setSettingsOption('account', $key, $value);
+        }
 
         $activate = Oauth2\Activate::instance();
 

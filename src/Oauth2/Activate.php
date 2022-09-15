@@ -26,6 +26,7 @@ if (!class_exists('Activate')) {
         static $oauth_server;
         static $activationObj;
         static $params;
+        static $weblink_client = '';
 
         // Grace Period to refresh token at 90%
         // of Expires IN.
@@ -85,6 +86,8 @@ if (!class_exists('Activate')) {
 
             if ($weblink) {
                 self::$params = $ADMWPP_APP_ENVIRONMENT[ADMWPP_ENV]['weblink'];
+                self::setWeblinkClient();
+                self::$params['client'] = self::$weblink_client;
             }
 
             self::setRedirectUri();
@@ -412,6 +415,21 @@ if (!class_exists('Activate')) {
         {
             //self::$redirect_uri = ADMWPP_URL_ROUTES .'?_uri=oauth/callback';
             self::$redirect_uri = site_url() . "/wp-json/admwpp/oauth/callback";
+        }
+
+        /**
+         * Sets the Weblink Client Identifier.
+         *
+         * @return void
+         *
+         * */
+        protected static function setWeblinkClient()
+        {
+            if (defined('ADMWPP_WEBLINK_CLIENT') && ADMWPP_WEBLINK_CLIENT !== '') {
+                self::$weblink_client = ADMWPP_WEBLINK_CLIENT;
+            } else {
+                self::$weblink_client = Settings::instance()->getSettingsOption('account', 'client');
+            }
         }
 
         /**
