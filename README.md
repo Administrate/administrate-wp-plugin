@@ -4,7 +4,7 @@ Requires at least: 5.0.0
 
 Tested up to: 5.3.2
 
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 
 License: GPLv2 or later
 
@@ -343,6 +343,9 @@ To a certain extent those are more or less self explanatory on how to use and ex
 * The [PHP SDK](https://packagist.org/packages/administrate/phpsdk) is also hosted on [Packagist](https://packagist.org/) so it can be used as stand alone.
 
 ## Change log
+
+### 1.1.0 
+* The Bundled Learning Paths shortcode `[admwpp-bundled-lps]` will now not display sold out Learning Paths
 
 ### 1.0.0
 * Setting pages to enter activation credentials and default parameters.
