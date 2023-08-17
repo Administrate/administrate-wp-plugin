@@ -494,6 +494,11 @@ if (! class_exists('Shortcode')) {
                         'field' => 'isBundle',
                         'operation' => 'eq',
                         'value' => 'true',
+                    ),
+                    array(
+                        'field' => 'remainingPlaces',
+                        'operation' => 'gt',
+                        'value' => '0',
                     )
                 ),
                 'customFieldFilters' => array(),

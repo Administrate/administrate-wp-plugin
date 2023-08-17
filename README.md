@@ -15,6 +15,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Administrate WordPress Plugin to facilitate the integration and synchronization of TMS content into WordPress content and Taxonomies, with the ability to display the content in templates using short-codes / custom filters / template overrides.
 
+## Requirements
+
+On wp-admin, you must:
+1. go to Settings -> Permalinks and select **Post name** under Common Settings.
+2. go to Plugins -> Add new -> search for the Advanced Custom Fields (ACF) plugin and install it (otherwise you may get errors about an undefined `get_field()` function).
+
 ## Installation
 
 The plugin is not released on wordpress.org yet, so if you need to use it please contact Administrate by sending us en email at support@getadministrate.com and we will send you the files needed to install the plugin.
@@ -171,6 +177,18 @@ Expected Result should be something similar to the bellow:
   ```
 
 # Developers Section
+
+## Setup
+The project includes a Dockerized setup for WordPress which can be started by running the following command from the project root:
+```bash
+docker-compose up -d
+```
+You can then go to http://localhost:8888 to set up your WordPress site:
+
+1. see the [Requirements](#Requirements) section in this document to configure any settings and required plugins
+2. Go to Plugins -> Administrate and click "Activate"
+3. You will be asked for a client ID and secret (you can generate them in our developer portal) and a production instance name to connect to
+
 
 ## Custom Filters
 ### Shortcode Filters
